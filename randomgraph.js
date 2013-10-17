@@ -1,6 +1,6 @@
 (function() {
 
-    var randomgraphs = {
+    var randomgraph = {
 
         /**
          * Erdős–Rényi aka Gilbert
@@ -116,7 +116,7 @@
 
     // CommonJS module is defined
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = randomgraphs;
+        module.exports = randomgraph;
     }
 
     /*global ender:false */
@@ -124,13 +124,13 @@
         // here, `this` means `window` in the browser, or `global` on the server
         // add `numeral` as a global object via a string identifier,
         // for Closure Compiler 'advanced' mode
-        this['randomgraphs'] = randomgraphs;
+        this['randomgraph'] = randomgraph;
     }
 
     /*global define:false */
     if (typeof define === 'function' && define.amd) {
         define([], function () {
-            return randomgraphs;
+            return randomgraph;
         });
     }
 
