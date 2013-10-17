@@ -52,9 +52,10 @@
                     do {
                         t = Math.floor(Math.random() * n-1);
                     } while (t == i || edge_lut[i+'-'+t]);
-                    edge_lut[i+'-'+j].target = t; // rewire
-                    edge_lut[i+'-'+t] = edge_lut[i+'-'+j];
-                    delete edge_lut[i+'-'+j];
+                    var j_ = (i+j)%n;
+                    edge_lut[i+'-'+j_].target = t; // rewire
+                    edge_lut[i+'-'+t] = edge_lut[i+'-'+j_];
+                    delete edge_lut[i+'-'+j_];
                 }
             }
             return graph;
