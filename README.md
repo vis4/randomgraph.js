@@ -1,6 +1,8 @@
 randomgraph.js
 ==============
 
+![preview](http://vis4.net/tmp/screenshots/screenshot%202013-10-17%20um%2016.55.10.png)
+
 ```javascriot
 /* Erdős–Rényi (n, p)
  *
