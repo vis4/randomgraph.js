@@ -30,7 +30,7 @@
          *
          * @param n number of nodes
          * @param K mean degree (even integer)
-         * @param beta "special parameter"
+         * @param beta rewiring probability [0..1]
          */
         WS: function(n, K, beta) {
             var graph = { nodes: [], edges: [] },
@@ -51,7 +51,7 @@
                 for (j = 1; j <= K; j++) { // for every pair of nodes
                     if (Math.random() <= beta) {
                         do {
-                            t = Math.floor(Math.random() * n-1);
+                            t = Math.floor(Math.random() * (n-1));
                         } while (t == i || edge_lut[i+'-'+t]);
                         var j_ = (i+j)%n;
                         edge_lut[i+'-'+j_].target = t; // rewire
