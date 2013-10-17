@@ -80,11 +80,13 @@
             }
             // Linking every node with each other (no self-loops)
             for (i = 0; i < m0; i++) {
-                edge = { source: i, target: j };
-                edge_lut[edge.source+'-'+edge.target] = edge;
-                graph.edges.push(edge);
-                degrees[i]++;
-                degrees[j]++;
+                for (j = i+1; j < m0; j++) {
+                    edge = { source: i, target: j };
+                    edge_lut[edge.source+'-'+edge.target] = edge;
+                    graph.edges.push(edge);
+                    degrees[i]++;
+                    degrees[j]++;
+                }
             }
             // Adding N - m0 nodes, each with M edges
             for (i = m0; i < N; i++) {
