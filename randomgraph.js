@@ -66,9 +66,9 @@
         /**
          * Barabási–Albert
          *
-         * @param N total number of nodes
-         * @param m0
-         * @param M
+         * @param N total number of nodes  N  > 0
+         * @param m0  m0 > 0 && m0 <  N
+         * @param M    M  > 0 && M  <= m0
          */
         BA: function(N, m0, M) {
             var graph = { nodes: [], edges: [] },
@@ -108,6 +108,8 @@
                         if (r <= p) {
                             s += degrees[j] / sum;
                             edge = { source: i, target: j };
+                            edge_lut[edge.source+'-'+edge.target] = edge;
+                            graph.edges.push(edge);
                             degrees[i]++;
                             degrees[j]++;
                             break;
