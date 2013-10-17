@@ -1,6 +1,10 @@
 randomgraph.js
 ==============
 
+A small library for generating, well, random graphs. Not that many
+models at the moment, feel free to jump in and add some more. The algorithms
+were partly ported and double-checked with the [Gephi implemantation](https://github.com/cbartosiak/gephi-plugins/tree/complex-generators/ComplexGeneratorPlugin/src/org/gephi/io/complexgenerator/plugin) (thx @jacomyal for the link).
+
 ![preview](http://vis4.net/tmp/screenshots/screenshot%202013-10-17%20um%2016.55.10.png)
 
 ```javascriot
