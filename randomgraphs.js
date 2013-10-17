@@ -13,7 +13,7 @@
                 i, j;
             for (i = 0; i < n; i++) {
                 graph.nodes.push({ label: 'node '+i });
-                for (j = 0; j < i; i++) {
+                for (j = 0; j < i; j++) {
                     if (Math.random() < p) {
                         graph.edges.push({
                             source: i,
