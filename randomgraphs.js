@@ -134,6 +134,4 @@
         });
     }
 
-    return randomgraphs;
-
 })();
