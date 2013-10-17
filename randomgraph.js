@@ -40,7 +40,7 @@
             for (i = 0; i < n; i++) {
                 graph.nodes.push({ label: 'node '+i });
                 // create a latice ring structure
-                for (j = 0; j < K; j++) {
+                for (j = 1; j <= K; j++) {
                     edge = { source: i, target: (i+j)%n };
                     edge_lut[edge.source+'-'+edge.target] = edge;
                     graph.edges.push(edge);
@@ -48,14 +48,16 @@
             }
             // rewiring of edges
             for (i = 0; i < n; i++) {
-                for (j = 0; j < K; j++) { // for every pair of nodes
-                    do {
-                        t = Math.floor(Math.random() * n-1);
-                    } while (t == i || edge_lut[i+'-'+t]);
-                    var j_ = (i+j)%n;
-                    edge_lut[i+'-'+j_].target = t; // rewire
-                    edge_lut[i+'-'+t] = edge_lut[i+'-'+j_];
-                    delete edge_lut[i+'-'+j_];
+                for (j = 1; j <= K; j++) { // for every pair of nodes
+                    if (Math.random() <= beta) {
+                        do {
+                            t = Math.floor(Math.random() * n-1);
+                        } while (t == i || edge_lut[i+'-'+t]);
+                        var j_ = (i+j)%n;
+                        edge_lut[i+'-'+j_].target = t; // rewire
+                        edge_lut[i+'-'+t] = edge_lut[i+'-'+j_];
+                        delete edge_lut[i+'-'+j_];
+                    }
                 }
             }
             return graph;
