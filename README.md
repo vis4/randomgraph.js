@@ -13,7 +13,7 @@ were partly ported and double-checked with the [Gephi implementations](https://g
  * n .. number of nodes
  * p .. edge probability
  */
-graph = randomgraph.ER(150, 0.05);
+graph = randomgraph.ErdosRenyi.np(150, 0.05);
 
 /* Watts-Strogatz (n, K, beta)
  *

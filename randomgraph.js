@@ -2,28 +2,93 @@
 
     var randomgraph = {
 
-        /**
-         * Erdős–Rényi aka Gilbert
+        /*
+         * Simple balanced tree
          *
-         * @param n number of nodes
-         * @param p probability of a edge between any two nodes
+         * @param r number of children each node has
+         * @param h height of the tree
          */
-        ER: function(n, p) {
-            var graph = { nodes: [], edges: [] },
-                i, j;
-            for (i = 0; i < n; i++) {
-                graph.nodes.push({ label: 'node '+i });
-                for (j = 0; j < i; j++) {
-                    if (Math.random() < p) {
-                        graph.edges.push({
-                            source: i,
-                            target: j
-                        });
+        BalancedTree: function(r, h) {
+            var n = (Math.pow(r, h + 1) - 1) / (r - 1),
+                v = 0,
+                graph = { nodes: [], edges: [] },
+                root = { label: 'node 0' },
+                newLeaves = [],
+                i, j, height, node, leaves;
+
+            for (i = 0; i < r; i++) {
+                node = { label: 'node '+(++v), index: v };
+                graph.nodes.push(node);
+                newLeaves.push(node);
+                graph.edges.push({ source: 0, target: v });
+            }
+
+            for (height = 1; height < h; height++) {
+                leaves = newLeaves;
+                newLeaves = [];
+                for (j = 0; j < leaves.length; j++) {
+                    for (i = 0; i < r; i++) {
+                        node = { label: 'node '+(++v), index: v };
+                        newLeaves.push(node);
+                        graph.nodes.push(node);
+                        graph.edges.push({ source: leaves[j].index, target: v });
                     }
                 }
             }
             return graph;
         },
+
+        ErdosRenyi: {
+            /**
+             * Erdős–Rényi aka Gilbert
+             *
+             * @param n number of nodes
+             * @param p probability of a edge between any two nodes
+             */
+            np: function(n, p) {
+                var graph = { nodes: [], edges: [] },
+                    i, j;
+                for (i = 0; i < n; i++) {
+                    graph.nodes.push({ label: 'node '+i });
+                    for (j = 0; j < i; j++) {
+                        if (Math.random() < p) {
+                            graph.edges.push({
+                                source: i,
+                                target: j
+                            });
+                        }
+                    }
+                }
+                return graph;
+            },
+
+            /**
+             * Erdős–Rényi aka Gilbert
+             *
+             * @param n number of nodes
+             * @param m number of edges
+             */
+            nm: function(n, m) {
+                var graph = { nodes: [], edges: [] },
+                    tmpEdges = [],
+                    i, j, k;
+                for (i = 0; i < n; i++) {
+                    graph.nodes.push({ label: 'node '+i });
+                    for (j = i+1; j < n; j++) {
+                        tmpEdges.push({ source: i, target: j });
+                    }
+                }
+                // pick m random edges from tmpEdges
+                k = tmpEdges.length - 1;
+                for (i = 0; i < m; i++) {
+                    graph.edges.push(tmpEdges.splice(Math.floor(Math.random()*k), 1)[0]);
+                    k--;
+                }
+                return graph;
+            }
+
+        },
+
 
         /**
          * Watts-Strogatz
@@ -32,7 +97,7 @@
          * @param K mean degree (even integer)
          * @param beta rewiring probability [0..1]
          */
-        WS: function(n, K, beta) {
+        WattsStrogatz: function(n, K, beta) {
             var graph = { nodes: [], edges: [] },
                 i, j, t, edge,
                 edge_lut = {};
@@ -70,7 +135,7 @@
          * @param m0  m0 > 0 && m0 <  N
          * @param M    M  > 0 && M  <= m0
          */
-        BA: function(N, m0, M) {
+        BarabasiAlbert: function(N, m0, M) {
             var graph = { nodes: [], edges: [] },
                 edge_lut = {},
                 degrees = [],
