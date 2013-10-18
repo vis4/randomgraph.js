@@ -9,15 +9,13 @@
          * @param h height of the tree
          */
         BalancedTree: function(r, h) {
-            var n = (Math.pow(r, h + 1) - 1) / (r - 1),
-                v = 0,
-                graph = { nodes: [], edges: [] },
-                root = { label: 'node 0' },
+            var v = 0,
+                graph = { nodes: [{ label: 'node 0', index: 0 }], edges: [] },
                 newLeaves = [],
                 i, j, height, node, leaves;
 
             for (i = 0; i < r; i++) {
-                node = { label: 'node '+(++v), index: v };
+                node = { label: 'node '+(++v), index: (v-1) };
                 graph.nodes.push(node);
                 newLeaves.push(node);
                 graph.edges.push({ source: 0, target: v });
@@ -28,7 +26,7 @@
                 newLeaves = [];
                 for (j = 0; j < leaves.length; j++) {
                     for (i = 0; i < r; i++) {
-                        node = { label: 'node '+(++v), index: v };
+                        node = { label: 'node '+(++v), index: (v-1) };
                         newLeaves.push(node);
                         graph.nodes.push(node);
                         graph.edges.push({ source: leaves[j].index, target: v });
