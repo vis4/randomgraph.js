@@ -1,6 +1,6 @@
 {
    "name": "randomgraph",
-   "version": "0.1.2",
+   "version": "0.1.3",
    "author": "Gregor Aisch <mail@driven-by-data.net>",
    "description": "A small library for generating, well, random graphs. Not that many models at the moment, feel free to jump in and add some more. The algorithms were partly ported and double-checked with the Gephi implementations.",
    "main": "./randomgraph",
