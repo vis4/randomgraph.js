@@ -61,12 +61,12 @@
             },
 
             /**
-             * Erdős–Rényi aka Gilbert
+             * Erdős–Rényi
              *
              * @param n number of nodes
-             * @param m number of edges
+             * @param M number of edges
              */
-            nm: function(n, m) {
+            nm: function(n, M) {
                 var graph = { nodes: [], edges: [] },
                     tmpEdges = [],
                     i, j, k;
@@ -78,7 +78,7 @@
                 }
                 // pick m random edges from tmpEdges
                 k = tmpEdges.length - 1;
-                for (i = 0; i < m; i++) {
+                for (i = 0; i < M; i++) {
                     graph.edges.push(tmpEdges.splice(Math.floor(Math.random()*k), 1)[0]);
                     k--;
                 }
