@@ -1,12 +1,16 @@
 (function() {
 
+    /**
+     * @namespace randomgraph
+     */
     var randomgraph = {
 
-        /*
+        /**
          * Simple balanced tree
          *
-         * @param r number of children each node has
-         * @param h height of the tree
+         * @memberof randomgraph
+         * @param {Number} r number of children each node has
+         * @param {Number} h height of the tree
          */
         BalancedTree: function(r, h) {
             var v = 0,
@@ -36,12 +40,16 @@
             return graph;
         },
 
+        /**
+         * @namespace randomgraph.ErdosRenyi
+         */
         ErdosRenyi: {
             /**
              * Erdős–Rényi aka Gilbert
              *
-             * @param n number of nodes
-             * @param p probability of a edge between any two nodes
+             * @memberof randomgraph.ErdosRenyi
+             * @param {Number} n number of nodes
+             * @param {Number} p probability of a edge between any two nodes
              */
             np: function(n, p) {
                 var graph = { nodes: [], edges: [] },
@@ -63,8 +71,9 @@
             /**
              * Erdős–Rényi
              *
-             * @param n number of nodes
-             * @param M number of edges
+             * @memberof randomgraph.ErdosRenyi
+             * @param {Number} n number of nodes
+             * @param {Number} M number of edges
              */
             nm: function(n, M) {
                 var graph = { nodes: [], edges: [] },
@@ -87,15 +96,18 @@
 
         },
 
+        /**
+         * @namespace randomgraph.WattsStrogatz
+         */
         WattsStrogatz: {
-
 
             /**
              * Watts-Strogatz Small World model Alpha
              *
-             * @param n number of nodes
-             * @param K mean degree (even integer)
-             * @param alpha rewiring probability [0..1]
+             * @memberof randomgraph.WattsStrogatz
+             * @param {Number} n number of nodes
+             * @param {Number} K mean degree (even integer)
+             * @param {Number} alpha rewiring probability [0..1]
              */
             alpha: function(n, k, alpha) {
                 var graph = { nodes: [], edges: [] },
@@ -168,9 +180,10 @@
             /**
              * Watts-Strogatz Small World model Beta
              *
-             * @param n number of nodes
-             * @param K mean degree (even integer)
-             * @param beta rewiring probability [0..1]
+             * @memberof randomgraph.WattsStrogatz
+             * @param {Number} n number of nodes
+             * @param {Number} K mean degree (even integer)
+             * @param {Number} beta rewiring probability [0..1]
              */
             beta: function(n, K, beta) {
                 var graph = { nodes: [], edges: [] },
@@ -207,9 +220,10 @@
         /**
          * Barabási–Albert
          *
-         * @param N total number of nodes  N  > 0
-         * @param m0  m0 > 0 && m0 <  N
-         * @param M    M  > 0 && M  <= m0
+         * @memberof randomgraph
+         * @param {Number} N total number of nodes  N  > 0
+         * @param {Number} m0 m0 > 0 && m0 <  N
+         * @param {Number} M M  > 0 && M  <= m0
          */
         BarabasiAlbert: function(N, m0, M) {
             var graph = { nodes: [], edges: [] },
