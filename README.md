@@ -7,28 +7,89 @@ were partly ported and double-checked with the [Gephi implementations](https://g
 
 ![preview](http://vis4.net/tmp/screenshots/screenshot%202013-10-17%20um%2016.55.10.png)
 
-```javascriot
-/* Erdős–Rényi (n, p)
- *
- * n .. number of nodes
- * p .. edge probability
- */
-graph = randomgraph.ErdosRenyi.np(150, 0.05);
+<a name="randomgraph"></a>
+#Documentation
+**Members**
 
-/* Watts-Strogatz (n, K, beta)
- *
- * n .. number of nodes
- * K .. mean degree (even integer)
- * beta .. rewiring probability [0..1]
- */
-graph = randomgraph.WS(150, 4, 0.4);
+* [randomgraph](#randomgraph)
+  * [randomgraph.BalancedTree(r, h)](#randomgraph.BalancedTree)
+  * [randomgraph.BarabasiAlbert(N, m0, M)](#randomgraph.BarabasiAlbert)
+  * [randomgraph.ErdosRenyi](#randomgraph.ErdosRenyi)
+    * [ErdosRenyi.np(n, p)](#randomgraph.ErdosRenyi.np)
+    * [ErdosRenyi.nm(n, M)](#randomgraph.ErdosRenyi.nm)
+  * [randomgraph.WattsStrogatz](#randomgraph.WattsStrogatz)
+    * [WattsStrogatz.alpha(n, K, alpha)](#randomgraph.WattsStrogatz.alpha)
+    * [WattsStrogatz.beta(n, K, beta)](#randomgraph.WattsStrogatz.beta)
 
-/* Barabási–Albert (N, m0, M)
- *
- * N .. number of nodes
- * m0 .. size of connected core (m0 <= N)
- * M .. (M <= m0)
- */
-graph = randomgraph.BA(150, 10, 2);
+<a name="randomgraph.BalancedTree"></a>
+##randomgraph.BalancedTree(r, h)
+Simple balanced tree
 
-```
+**Params**
+
+- r `Number` - number of children each node has  
+- h `Number` - height of the tree  
+
+<a name="randomgraph.BarabasiAlbert"></a>
+##randomgraph.BarabasiAlbert(N, m0, M)
+Barabási–Albert
+
+**Params**
+
+- N `Number` - total number of nodes  N  > 0  
+- m0 `Number` - m0 > 0 && m0 <  N  
+- M `Number` - M  > 0 && M  <= m0  
+
+<a name="randomgraph.ErdosRenyi"></a>
+##randomgraph.ErdosRenyi
+**Members**
+
+* [randomgraph.ErdosRenyi](#randomgraph.ErdosRenyi)
+  * [ErdosRenyi.np(n, p)](#randomgraph.ErdosRenyi.np)
+  * [ErdosRenyi.nm(n, M)](#randomgraph.ErdosRenyi.nm)
+
+<a name="randomgraph.ErdosRenyi.np"></a>
+###ErdosRenyi.np(n, p)
+Erdős–Rényi aka Gilbert
+
+**Params**
+
+- n `Number` - number of nodes  
+- p `Number` - probability of a edge between any two nodes  
+
+<a name="randomgraph.ErdosRenyi.nm"></a>
+###ErdosRenyi.nm(n, M)
+Erdős–Rényi
+
+**Params**
+
+- n `Number` - number of nodes  
+- M `Number` - number of edges  
+
+<a name="randomgraph.WattsStrogatz"></a>
+##randomgraph.WattsStrogatz
+**Members**
+
+* [randomgraph.WattsStrogatz](#randomgraph.WattsStrogatz)
+  * [WattsStrogatz.alpha(n, K, alpha)](#randomgraph.WattsStrogatz.alpha)
+  * [WattsStrogatz.beta(n, K, beta)](#randomgraph.WattsStrogatz.beta)
+
+<a name="randomgraph.WattsStrogatz.alpha"></a>
+###WattsStrogatz.alpha(n, K, alpha)
+Watts-Strogatz Small World model Alpha
+
+**Params**
+
+- n `Number` - number of nodes  
+- K `Number` - mean degree (even integer)  
+- alpha `Number` - rewiring probability [0..1]  
+
+<a name="randomgraph.WattsStrogatz.beta"></a>
+###WattsStrogatz.beta(n, K, beta)
+Watts-Strogatz Small World model Beta
+
+**Params**
+
+- n `Number` - number of nodes  
+- K `Number` - mean degree (even integer)  
+- beta `Number` - rewiring probability [0..1]  
